@@ -86,7 +86,7 @@
 .greeting {
   font-family: var(--font-body);
   font-size: 13px;
-  color: var(--paper);
+  color: var(--fog);
   margin-bottom: 10px;
 }
 
