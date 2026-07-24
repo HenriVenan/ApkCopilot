@@ -1,0 +1,162 @@
+.box {
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+.box h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  margin: 22px 0 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--info);
+}
+
+.box h3:first-child {
+  margin-top: 0;
+}
+
+.inlineForm {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--hairline);
+  background: var(--panel-raised);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: appear 0.22s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inlineFormActions {
+  display: flex;
+  gap: 10px;
+}
+
+.occList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.occCard {
+  padding: 14px 16px;
+  border-left: 4px solid var(--info);
+  position: relative;
+}
+
+.occHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.occLh {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.occDriver {
+  color: var(--fog);
+  font-size: 12.5px;
+}
+
+.occText {
+  font-size: 13px;
+  color: var(--fog);
+  line-height: 1.5;
+}
+
+.removeBtn {
+  background: transparent;
+  border: none;
+  color: var(--fog-dim);
+  cursor: pointer;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.removeBtn:hover {
+  color: var(--danger);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.summaryPanel {
+  padding: 22px;
+}
+
+.section {
+  margin-bottom: 22px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--signal-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tripRow {
+  display: block;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 13.5px;
+  border-bottom: 1px dashed var(--hairline);
+}
+
+.tripRow div {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tripRow:last-child {
+  border-bottom: none;
+}
+
+.lhTag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--panel-raised);
+  border: 1px solid var(--hairline);
+}
+
+.noOcc {
+  color: var(--ok);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 13px;
+}

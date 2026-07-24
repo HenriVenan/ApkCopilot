@@ -1,0 +1,46 @@
+:root {
+  /* ---- Base ---- */
+  --ink: #1b2435;
+  --panel: #ffffff;
+  --panel-raised: #f6f8fc;
+  --hairline: #d9e1ee;
+  --fog: #5d6984;
+  --fog-dim: #8b97b1;
+  --paper: #f4f7fc;
+
+  /* ---- Accent ---- */
+  --signal: #ff6a1a;
+  --signal-soft: #ff9d5a;
+  --signal-wash: rgba(255, 106, 26, 0.1);
+
+  /* ---- Status ---- */
+  --ok: #22c55e;
+  --ok-wash: rgba(34, 197, 94, 0.1);
+
+  --warn: #f5a623;
+  --warn-wash: rgba(245, 166, 35, 0.1);
+
+  --danger: #ef4444;
+  --danger-wash: rgba(239, 68, 68, 0.1);
+
+  --info: #3aa0ff;
+  --info-wash: rgba(58, 160, 255, 0.1);
+
+  /* ---- Type ---- */
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* ---- Scale ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* ---- Shadows ---- */
+  --shadow-panel:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 4px 12px rgba(15, 23, 42, 0.08);
+
+  --shadow-lift:
+    0 12px 28px rgba(15, 23, 42, 0.12);
+}
