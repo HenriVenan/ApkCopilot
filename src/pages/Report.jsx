@@ -29,9 +29,9 @@ function formatDateTime(value) {
 export default function Report() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(EMPTY_FORM);
-  const [ocorrencias, setOcorrencias] = useState([]);
-  const [occMemory, setOccMemory] = useState([]);
-  
+  const [ocorrencias, setOcorrencias] = useState(() => {
+    return JSON.parse(localStorage.getItem("ocorrencias")) || []
+  });
 
   function updateField(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -45,13 +45,18 @@ export default function Report() {
     e.preventDefault();
     if (!form.motorista.trim() || !form.destino.trim()) return;
 
-    console.log(form);
-
     setOcorrencias((prev) => [{ id: crypto.randomUUID(), ...form }, ...prev]);
-    setShowForm(false);
 
-    localStorage.setItem(`Occs`, JSON.stringify(form));
-    setOccMemory((prev) => [...prev, { id: crypto.randomUUID(), ...form }]);
+    if (localStorage.getItem('ocorrencias')) {
+      const prev = JSON.parse(localStorage.getItem('ocorrencias'));
+      localStorage.setItem('ocorrencias', JSON.stringify([{ id: crypto.randomUUID(), ...form }, ...prev]));
+    }
+
+    else {
+      localStorage.setItem('ocorrencias', JSON.stringify([{ id: crypto.randomUUID(), ...form }]));
+    }
+
+    setShowForm(false);
     setForm(EMPTY_FORM);
   }
 
@@ -139,13 +144,13 @@ export default function Report() {
       )}
 
       <div className={styles.list}>
-        {localStorage.getItem('Occs') ? (
+        {ocorrencias.length === 0 ? (
           <div className="empty-state">
             <span className="empty-state__icon">📭</span>
             Nenhuma ocorrência registrada hoje
           </div>
         ) : (
-          occMemory.map((o) => (
+          ocorrencias.map((o) => (
             <div
               key={o.id}
               className={`panel ${styles.occCard} ${o.tipo === 'delay' ? styles['occCard--delay'] : ''}`}
