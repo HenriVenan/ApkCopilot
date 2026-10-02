@@ -25,7 +25,9 @@ function montarCardTexto(v, statusColeta) {
   }
   texto += `   🎯 CHEGADA NO CLIENTE: ${v.etaDestino}\n`;
   texto += `\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  texto += `\n    🚨 *AVISO* 🚨\n`;
+  texto += `\n    🚨 *AVISOS* 🚨\n`;
+  texto += `\n    Para solicitação de documentos de viagem, entrar em contato com a torre de controle`
+  texto += `\n    *Torre de Controle:* 📞 +55 (41) 9121-7345\n`
   texto += `\n    Caso a documentação de viagem demore *MAIS DE 40 MINUTOS* para ser enviada:`;
   texto += `\n    ⚠ *Tire um PRINT da conversa e nos ENVIE IMEDIATAMENTE*`;
   return texto;
