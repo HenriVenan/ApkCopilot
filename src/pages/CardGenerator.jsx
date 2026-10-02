@@ -45,8 +45,6 @@ export default function CardGenerator() {
   const [viagens, setViagens] = useState([]);
   const [feedback, setFeedback] = useState(null);
 
-  // Keeps "faltam X min para a coleta" readouts live, mirroring the
-  // original setInterval(atualizarDataHora, 60000) + renderizarCards().
   useClock(60000);
 
   function importarDados() {
@@ -153,16 +151,19 @@ export default function CardGenerator() {
       ) : (
         <div className={styles.cardsGrid}>
           {viagens.map((v) => {
+            if (v.motorista == "") {
+              return
+            }
+
             const statusColeta = calcularStatusColeta(v.dataColetaRaw || v.dataColeta, v.status);
             const cardTexto = montarCardTexto(v, statusColeta);
             const { period, firstNameMot, hourColeta } = montarSaudacao(v);
-            const saudacao = `${period} ${firstNameMot}, tudo bem? Queria saber se esta tudo nos conformes pra sua coleta de hoje às ${hourColeta}?`;
+            const saudacao = `${period} ${firstNameMot}, tudo bem? Queria saber se esta tudo certo pra sua coleta de hoje às ${hourColeta}?`;
 
             return (
               <div key={v.id} className={`panel ${styles.tripCard} ${TIPO_CLASS[v.tipo] || ''}`}>
                 <p className={styles.greeting}>
-                  {period} <span className={styles.name}>{firstNameMot}</span>, tudo bem? Queria saber se esta tudo
-                  nos conformes pra sua coleta de hoje às {hourColeta}?
+                  {saudacao}
                 </p>
                 <pre className={styles.cardText}>{cardTexto}</pre>
                 <div className={styles.actions}>
