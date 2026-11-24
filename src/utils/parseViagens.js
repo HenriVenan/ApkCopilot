@@ -27,10 +27,9 @@ export function parseViagens(texto) {
     let observacao = ""
     let origem = ""
     let destino = ""
+    let client = colunas[3].includes(":")
 
-    console.log(colunas[5].includes(":"))
-
-    if(colunas[5].includes(":")){
+    if(client){
         id = colunas[2]?.trim() || '';
         dataColeta = colunas[3]?.trim() || '';
         cptMeta = colunas[4]?.trim() || '';

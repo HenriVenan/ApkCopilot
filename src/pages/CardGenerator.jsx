@@ -23,13 +23,16 @@ function montarCardTexto(v, statusColeta) {
   if (statusColeta) {
     texto += `   ${statusColeta}\n`;
   }
+
   texto += `   🎯 CHEGADA NO CLIENTE: ${v.etaDestino}\n`;
   texto += `\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
   texto += `\n    🚨 *AVISOS* 🚨\n`;
   texto += `\n    Para solicitação de documentos de viagem, entrar em contato com a torre de controle`
   texto += `\n    *Torre de Controle:* 📞 +55 (41) 9121-7345\n`
   texto += `\n    Caso a documentação de viagem demore *MAIS DE 40 MINUTOS* para ser enviada:`;
-  texto += `\n    ⚠ *Tire um PRINT da conversa e nos ENVIE IMEDIATAMENTE*`;
+  texto += `\n    ⚠ *Tire um PRINT da conversa e nos ENVIE IMEDIATAMENTE*\n`;
+  texto += `\n    🚚 ➡ 🚛 Em caso de troca de motorista, *AVISAR* imediatamente a este contato`
+  
   return texto;
 }
 
@@ -38,6 +41,11 @@ function montarSaudacao(v) {
   const firstNameMot = (v.motorista.split(' ')[0] || '').toLowerCase();
   const hourColeta = v.dataColeta.split(' ')[1] || v.dataColeta;
   return { period, firstNameMot, hourColeta };
+}
+
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export default function CardGenerator() {
@@ -158,7 +166,7 @@ export default function CardGenerator() {
             const statusColeta = calcularStatusColeta(v.dataColetaRaw || v.dataColeta, v.status);
             const cardTexto = montarCardTexto(v, statusColeta);
             const { period, firstNameMot, hourColeta } = montarSaudacao(v);
-            const saudacao = `${period} ${firstNameMot}, tudo bem? Queria saber se esta tudo certo pra sua coleta de hoje às ${hourColeta}?`;
+            const saudacao = `${period} ${capitalize(firstNameMot)}, tudo bem? Queria saber se esta tudo certo pra sua coleta de hoje às ${hourColeta}?`;
 
             return (
               <div key={v.id} className={`panel ${styles.tripCard} ${TIPO_CLASS[v.tipo] || ''}`}>
