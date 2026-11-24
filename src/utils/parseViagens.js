@@ -15,29 +15,60 @@ export function parseViagens(texto) {
     if (colunas[0] === 'PERFIL' || colunas[0].toUpperCase() === 'PERFIL') continue;
     if (colunas.length < 8) continue;
 
-    const lhTrip = colunas[2]?.trim() || '';
-    const rota = colunas[1]?.trim() || '';
-    const dataColeta = colunas[3]?.trim() || '';
-    const cptMeta = colunas[4]?.trim() || '';
-    const etaDestino = colunas[5]?.trim() || '';
-    const motorista = colunas[11]?.trim() || '';
-    const cavalo = colunas[12]?.trim() || '';
-    const carreta = colunas[13]?.trim() || '';
-    const status = colunas[14]?.trim() || 'PENDENTE';
-    const observacao = colunas[15]?.trim() || colunas[13]?.trim() || '';
+    let id = ""
+    let rota = ""
+    let dataColeta = ""
+    let cptMeta = ""
+    let etaDestino = ""
+    let motorista = ""
+    let cavalo = ""
+    let carreta = ""
+    let status = ""
+    let observacao = ""
+    let origem = ""
+    let destino = ""
 
-    if (!lhTrip) continue;
+    console.log(colunas[5].includes(":"))
 
-    let origem = '';
-    let destino = '';
-    if (rota.includes('|')) {
-      const partes = rota.split('|');
-      origem = partes[0].trim();
-      destino = partes[1].trim();
-    } else {
-      origem = rota;
-      destino = 'Destino não informado';
+    if(colunas[5].includes(":")){
+        id = colunas[2]?.trim() || '';
+        dataColeta = colunas[3]?.trim() || '';
+        cptMeta = colunas[4]?.trim() || '';
+        etaDestino = colunas[5]?.trim() || '';
+        motorista = colunas[11]?.trim() || '';
+        cavalo = colunas[12]?.trim() || '';
+        carreta = colunas[13]?.trim() || '';
+        status = colunas[14]?.trim() || 'PENDENTE';
+        observacao = colunas[15]?.trim() || colunas[13]?.trim() || '';
+        rota = colunas[1]?.trim() || '';
+
+        if (rota.includes('|')) {
+            const partes = rota.split('|');
+            origem = partes[0].trim();
+            destino = partes[1].trim();
+          } else {
+            origem = rota;
+            destino = 'Destino não informado';
+        }
     }
+
+    else {
+        id = colunas[6]?.trim() || '';
+        dataColeta = colunas[7]?.trim() || '';
+        cptMeta = colunas[8]?.trim() || '';
+        etaDestino = colunas[8]?.trim() || '';
+        motorista = colunas[16]?.trim() || '';
+        cavalo = colunas[17]?.trim() || '';
+        carreta = colunas[18]?.trim() || '';
+        status = colunas[20]?.trim() || 'PENDENTE';
+        observacao = colunas[25]?.trim() || '';
+        rota = colunas[1]?.trim() || '';
+        origem = colunas[4]?.trim() || '';
+        destino = colunas[5]?.trim() || '';
+    }
+
+    if (!id) continue;
+    
 
     let dataFormatada = dataColeta;
     if (dataFormatada && dataFormatada.includes(' ')) {
@@ -78,7 +109,7 @@ export function parseViagens(texto) {
     }
 
     viagens.push({
-      id: lhTrip,
+      id: id,
       origem,
       destino,
       rotaCompleta: rota,
