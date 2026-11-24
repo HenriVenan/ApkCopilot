@@ -20,10 +20,10 @@ export function parseViagens(texto) {
     const dataColeta = colunas[3]?.trim() || '';
     const cptMeta = colunas[4]?.trim() || '';
     const etaDestino = colunas[5]?.trim() || '';
-    const motorista = colunas[10]?.trim() || '';
-    const cavalo = colunas[11]?.trim() || '';
-    const carreta = colunas[12]?.trim() || '';
-    const status = colunas[13]?.trim() || 'PENDENTE';
+    const motorista = colunas[11]?.trim() || '';
+    const cavalo = colunas[12]?.trim() || '';
+    const carreta = colunas[13]?.trim() || '';
+    const status = colunas[14]?.trim() || 'PENDENTE';
     const observacao = colunas[15]?.trim() || colunas[13]?.trim() || '';
 
     if (!lhTrip) continue;
